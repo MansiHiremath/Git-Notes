@@ -1,0 +1,218 @@
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git init
+Initialized empty Git repository in D:/Mansi/Stashing/.git/
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ code master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git add .
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git commit -m"initial commit"
+[master (root-commit) cb17509] initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git checkout -b mybranch
+Switched to a new branch 'mybranch'
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ code file1.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash save
+No local changes to save
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git add .
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   file1.txt
+
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash save
+Saved working directory and index state WIP on mybranch: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+nothing to commit, working tree clean
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ code file2.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git add .
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git commit -m"Commit and stash"
+[mybranch 1287921] Commit and stash
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash save
+No local changes to save
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash list
+stash@{0}: WIP on mybranch: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git checkout master
+Switched to branch 'master'
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ code master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git add .
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git stash
+Saved working directory and index state WIP on master: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git stash list
+stash@{0}: WIP on master: cb17509 initial commit
+stash@{1}: WIP on mybranch: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (master)
+$ git checkout mybranch
+Switched to branch 'mybranch'
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+nothing to commit, working tree clean
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git diff
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash apply
+On branch mybranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   master.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+file2.txt  master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ code master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+file2.txt  master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ code master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   master.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ code file2.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+file2.txt  master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash list
+stash@{0}: WIP on master: cb17509 initial commit
+stash@{1}: WIP on mybranch: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash apply stash@{1}
+On branch mybranch
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   file1.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   master.txt
+
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+file1.txt  file2.txt  master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git commit -m"File1 update and commit"
+[mybranch 8a33259] File1 update and commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ ls
+file1.txt  file2.txt  master.txt
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git status
+On branch mybranch
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   master.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash list
+stash@{0}: WIP on master: cb17509 initial commit
+stash@{1}: WIP on mybranch: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash drop stash@{1}
+Dropped stash@{1} (43c1c39e534990d3be0ca223ab8734b4fe5098c9)
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$ git stash list
+stash@{0}: WIP on master: cb17509 initial commit
+
+TRG@ARISTW42S2083 MINGW64 /d/Mansi/Stashing (mybranch)
+$
